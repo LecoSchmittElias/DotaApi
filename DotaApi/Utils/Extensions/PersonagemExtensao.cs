@@ -74,9 +74,9 @@ namespace DotaApi.Utils.Extensions
 
         public static (string, bool) VerificarAtualizacaoTotal( this PersonagemEntity personagemEntrada, PersonagemEntity personagemEncontrado)
         {
-            if (personagemEntrada.Nome == personagemEncontrado.Nome) return ("Nome está igual ao anterior", false);
+            if (personagemEntrada.Nome.ToLower() == personagemEncontrado.Nome.ToLower()) return ("Nome está igual ao anterior", false);
 
-            if (personagemEntrada.Funcao == personagemEncontrado.Funcao) return ("Funcao está igual ao anterior", false);
+            if (personagemEntrada.Funcao.ToLower() == personagemEncontrado.Funcao.ToLower()) return ("Funcao está igual ao anterior", false);
 
             if (personagemEntrada.dificuldade == personagemEncontrado.dificuldade) return ("dificuldade está igual ao anterior", false);
 
@@ -86,7 +86,62 @@ namespace DotaApi.Utils.Extensions
 
             if (personagemEntrada.AtributoSecundario == personagemEncontrado.AtributoSecundario) return ("AtributoSecundario está igual ao anterior", false);
 
-            if (personagemEntrada.Imagem == personagemEncontrado.Imagem) return ("Imagem está igual ao anterior", false);
+            if (personagemEntrada.Imagem.ToLower() == personagemEncontrado.Imagem.ToLower()) return ("Imagem está igual ao anterior", false);
+
+            return ("", true);
+
+        }
+
+
+        public static (string, bool) VerificarAtualizacaoParcial(this PersonagemEntity personagemEntrada, PersonagemEntity personagemEncontrado)
+        {
+            if (personagemEntrada.Nome.ToLower() == personagemEncontrado.Nome.ToLower())
+            {
+                if (personagemEntrada.Funcao.ToLower() == personagemEncontrado.Funcao.ToLower())
+                {
+                    if (personagemEntrada.dificuldade == personagemEncontrado.dificuldade)
+                    {
+                        if (personagemEntrada.EstiloAtaque == personagemEncontrado.EstiloAtaque)
+                        {
+                            if (personagemEntrada.AtributoPrimario == personagemEncontrado.AtributoPrimario)
+                            {
+                                if (personagemEntrada.AtributoSecundario == personagemEncontrado.AtributoSecundario)
+                                {
+                                    if (personagemEntrada.Imagem.ToLower() == personagemEncontrado.Imagem.ToLower())
+                                    {
+                                        return ("Todos os itens são iguais ao anterior!", false);
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                }
+            }
+
+            if (personagemEntrada.Nome.ToLower() != personagemEncontrado.Nome.ToLower())
+            {
+                if (personagemEntrada.Funcao.ToLower() != personagemEncontrado.Funcao.ToLower())
+                {
+                    if (personagemEntrada.dificuldade != personagemEncontrado.dificuldade)
+                    {
+                        if (personagemEntrada.EstiloAtaque != personagemEncontrado.EstiloAtaque)
+                        {
+                            if (personagemEntrada.AtributoPrimario != personagemEncontrado.AtributoPrimario)
+                            {
+                                if (personagemEntrada.AtributoSecundario != personagemEncontrado.AtributoSecundario)
+                                {
+                                    if (personagemEntrada.Imagem.ToLower() != personagemEncontrado.Imagem.ToLower())
+                                    {
+                                        return ("Todos os itens são diferentes ao anterior!", false);
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                }
+            }
 
             return ("", true);
 

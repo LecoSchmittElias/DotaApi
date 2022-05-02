@@ -49,9 +49,17 @@ namespace DotaApi.Repositories
 
         public void RemoverPersonagem(PersonagemEntity personagem) => Personagens.Remove(personagem);
 
-        public void PutPersonagem(PersonagemEntity personagem)
+        public void ModificarPersonagem(PersonagemEntity personagemInserido, PersonagemEntity personagemEncontrado)
         {
-            
+           var localizacao = Personagens.IndexOf(personagemEncontrado);
+
+            Personagens[localizacao].EstiloAtaque = personagemInserido.EstiloAtaque;
+            Personagens[localizacao].Nome = personagemInserido.Nome;
+            Personagens[localizacao].Funcao = personagemInserido.Funcao;
+            Personagens[localizacao].AtributoPrimario = personagemInserido.AtributoPrimario;
+            Personagens[localizacao].AtributoSecundario = personagemInserido.AtributoSecundario;
+            Personagens[localizacao].Imagem = personagemInserido.Imagem;
+            Personagens[localizacao].dificuldade = personagemInserido.dificuldade;
         }
 
     }

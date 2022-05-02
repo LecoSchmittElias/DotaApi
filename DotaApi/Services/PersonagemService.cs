@@ -113,14 +113,49 @@ namespace DotaApi.Services
 
             var modificacaoCerta = personagemInserido.VerificarAtualizacaoTotal(personagemEncontrado);
 
-            if(modificacaoCerta.Item2 == false) return new RetornoDto(SistemaEnum.Retorno.BadRequest, null,modificacaoCerta.Item1);
+            if (modificacaoCerta.Item2 == false) return new RetornoDto(SistemaEnum.Retorno.BadRequest, null,modificacaoCerta.Item1);
+
+            if (_personagemRepository.SelectNome(personagemInserido) != null) return new RetornoDto(SistemaEnum.Retorno.BadRequest, null, "Ja temos um heroi cadastrado com esse nome!");
 
             try
             {
-                _personagemRepository.RemoverPersonagem(personagemEncontrado);
-                return new RetornoDto(SistemaEnum.Retorno.Ok, null, $"{personagemEncontrado.Nome} foi deletado!");
+                var nomeReserva = personagemEncontrado.Nome;
+                _personagemRepository.ModificarPersonagem(personagemInserido, personagemEncontrado);
+                return new RetornoDto(SistemaEnum.Retorno.Ok, null, $"{nomeReserva} foi alterado!");
             }
             catch(Exception ex)
+            {
+                return new RetornoDto(SistemaEnum.Retorno.BadRequest, null, $"Exceção gerada!: {ex}");
+            }
+        }
+
+
+        public RetornoDto AtualizarPersonagem(Guid? id, EntradaDto? personagem)
+        {
+            if (id == null) return new RetornoDto(SistemaEnum.Retorno.BadRequest, null);
+
+            var verificador = Verificador(personagem);
+            if (verificador.Item2 == false) return new RetornoDto(SistemaEnum.Retorno.BadRequest, null, verificador.Item1);
+
+            var personagemInserido = new PersonagemEntity((Guid)id, personagem);
+
+            var personagemEncontrado = _personagemRepository.SelectId(personagemInserido);
+
+            if (personagemEncontrado == null) return new RetornoDto(SistemaEnum.Retorno.NotFound, null);
+
+            var modificacaoCerta = personagemInserido.VerificarAtualizacaoParcial(personagemEncontrado);
+
+            if (modificacaoCerta.Item2 == false) return new RetornoDto(SistemaEnum.Retorno.BadRequest, null, modificacaoCerta.Item1);
+
+            if (_personagemRepository.SelectNome(personagemInserido) != null) return new RetornoDto(SistemaEnum.Retorno.BadRequest, null, "Ja temos um heroi cadastrado com esse nome!");
+
+            try
+            {
+                var nomeReserva = personagemEncontrado.Nome;
+                _personagemRepository.ModificarPersonagem(personagemInserido, personagemEncontrado);
+                return new RetornoDto(SistemaEnum.Retorno.Ok, null, $"{nomeReserva} foi alterado!");
+            }
+            catch (Exception ex)
             {
                 return new RetornoDto(SistemaEnum.Retorno.BadRequest, null, $"Exceção gerada!: {ex}");
             }

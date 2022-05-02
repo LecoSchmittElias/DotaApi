@@ -50,7 +50,20 @@ namespace DotaApi.Controllers
 
             if (retorno.Status.Equals(SistemaEnum.Retorno.BadRequest)) return BadRequest(retorno.Mensagem);
 
-            return Ok(retorno.Retorno);
+            return Ok(retorno.Mensagem);
+        }
+
+
+        [HttpPatch(Name = "PatchPersonagem")]
+        public IActionResult Patch(Guid? id, [FromBody] EntradaDto? dadosEntrada)
+        {
+            var retorno = _personagemService.AtualizarPersonagem(id, dadosEntrada);
+
+            if (retorno.Status.Equals(SistemaEnum.Retorno.NotFound)) return NotFound(retorno.Mensagem);
+
+            if (retorno.Status.Equals(SistemaEnum.Retorno.BadRequest)) return BadRequest(retorno.Mensagem);
+
+            return Ok(retorno.Mensagem);
         }
 
         [HttpDelete(Name = "DeletePersonagem")]

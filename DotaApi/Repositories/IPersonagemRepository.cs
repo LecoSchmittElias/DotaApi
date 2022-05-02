@@ -14,7 +14,7 @@ namespace DotaApi.Repositories
 
         public List<PersonagemEntity> SelectPersonagem(PersonagemGetEntity personagem);
 
-        public void PutPersonagem(PersonagemEntity personagem);
+        public void ModificarPersonagem(PersonagemEntity personagemInserido, PersonagemEntity personagemEncontrado);
 
 
     }

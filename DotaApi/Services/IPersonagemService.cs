@@ -12,5 +12,7 @@ namespace DotaApi.Services
         public RetornoDto DeletarPersonagem(Guid? id);
 
         public RetornoDto MudarPersonagem(Guid? id, EntradaDto? personagem);
+
+        public RetornoDto AtualizarPersonagem(Guid? id, EntradaDto? personagem);
     }
 }
