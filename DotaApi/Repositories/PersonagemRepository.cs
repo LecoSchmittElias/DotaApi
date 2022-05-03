@@ -13,7 +13,7 @@ namespace DotaApi.Repositories
             Nome = "Razor",
             Funcao = "Carry",
             EstiloAtaque = PersonagemEnum.Estilo.Ranged,
-            dificuldade = PersonagemEnum.Dificuldade.Facil,
+            Dificuldade = PersonagemEnum.Dificuldade.Facil,
             AtributoPrimario = PersonagemEnum.Atributo.Agilidade,
             AtributoSecundario = PersonagemEnum.Atributo.Forca,
             Imagem = "https://cdn.cloudflare.steamstatic.com/apps/dota2/videos/dota_react/heroes/renders/razor.png"
@@ -24,7 +24,7 @@ namespace DotaApi.Repositories
             Nome = "Tusk",
             Funcao = "Initiator",
             EstiloAtaque = PersonagemEnum.Estilo.Melee,
-            dificuldade = PersonagemEnum.Dificuldade.Facil,
+            Dificuldade = PersonagemEnum.Dificuldade.Facil,
             AtributoPrimario = PersonagemEnum.Atributo.Forca,
             AtributoSecundario = PersonagemEnum.Atributo.Inteligencia,
             Imagem = "https://cdn.cloudflare.steamstatic.com/apps/dota2/videos/dota_react/heroes/renders/tusk.png"
@@ -41,7 +41,7 @@ namespace DotaApi.Repositories
         public List<PersonagemEntity> SelectPersonagem(PersonagemGetEntity personagem) => Personagens.FindAll(x => x.Id == (personagem.Id != Guid.Empty ? personagem.Id : x.Id)
                                                                                                            && x.Nome.ToLower() == (!string.IsNullOrEmpty(personagem.Nome) ? personagem.Nome.ToLower() : x.Nome.ToLower())
                                                                                                            && x.Funcao.ToLower() == (!string.IsNullOrEmpty(personagem.Funcao) ? personagem.Funcao.ToLower() : x.Funcao.ToLower())
-                                                                                                           && x.dificuldade == (personagem.dificuldade != null ? personagem.dificuldade : x.dificuldade)
+                                                                                                           && x.Dificuldade == (personagem.Dificuldade != null ? personagem.Dificuldade : x.Dificuldade)
                                                                                                            && x.EstiloAtaque == (personagem.EstiloAtaque != 0 ? personagem.EstiloAtaque : x.EstiloAtaque)
                                                                                                            && x.AtributoPrimario == (personagem.AtributoPrimario != 0 ? personagem.AtributoPrimario : x.AtributoPrimario)
                                                                                                            && x.AtributoSecundario == (personagem.AtributoSecundario != null ? personagem.AtributoSecundario : x.AtributoSecundario)

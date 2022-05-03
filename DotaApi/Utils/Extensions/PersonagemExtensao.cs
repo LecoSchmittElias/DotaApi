@@ -78,7 +78,7 @@ namespace DotaApi.Utils.Extensions
 
             if (personagemEntrada.Funcao == personagemEncontrado.Funcao) return ("Funcao está igual ao anterior", false);
 
-            if (personagemEntrada.dificuldade == personagemEncontrado.dificuldade) return ("dificuldade está igual ao anterior", false);
+            if (personagemEntrada.Dificuldade == personagemEncontrado.Dificuldade) return ("dificuldade está igual ao anterior", false);
 
             if (personagemEntrada.EstiloAtaque == personagemEncontrado.EstiloAtaque) return ("EstiloAtaque está igual ao anterior", false);
 

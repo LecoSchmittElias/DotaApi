@@ -14,7 +14,7 @@ namespace DotaApi.Entities
 
             AtributoSecundario = personagem.AtributoSecundario;
             Imagem = personagem.Imagem;
-            dificuldade = personagem.Dificuldade;
+            Dificuldade = personagem.Dificuldade;
         }
     }
 }

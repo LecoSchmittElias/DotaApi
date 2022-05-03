@@ -10,7 +10,7 @@ namespace DotaApi.Entities
 
         public string Funcao { get; set; }
 
-        public PersonagemEnum.Dificuldade? dificuldade { get; set; }
+        public PersonagemEnum.Dificuldade? Dificuldade { get; set; }
 
         public PersonagemEnum.Estilo EstiloAtaque { get; set; }
 
@@ -31,7 +31,7 @@ namespace DotaApi.Entities
             AtributoSecundario = personagem.AtributoSecundario;
             Imagem = personagem.Imagem;
             EstiloAtaque = (PersonagemEnum.Estilo)personagem.EstiloAtaque;
-            dificuldade = personagem.Dificuldade;
+            Dificuldade = personagem.Dificuldade;
         }
 
         public PersonagemEntity(Guid id)
@@ -48,7 +48,7 @@ namespace DotaApi.Entities
             AtributoSecundario = personagem.AtributoSecundario;
             Imagem = personagem.Imagem;
             EstiloAtaque = (PersonagemEnum.Estilo)personagem.EstiloAtaque;
-            dificuldade = personagem.Dificuldade;
+            Dificuldade = personagem.Dificuldade;
         }
 
     }
