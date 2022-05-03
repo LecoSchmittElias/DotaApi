@@ -78,7 +78,7 @@ namespace DotaApi.Utils.Extensions
 
             if (personagemEntrada.Funcao.ToLower() == personagemEncontrado.Funcao.ToLower()) return ("Funcao está igual ao anterior", false);
 
-            if (personagemEntrada.dificuldade == personagemEncontrado.dificuldade) return ("dificuldade está igual ao anterior", false);
+            if (personagemEntrada.Dificuldade == personagemEncontrado.Dificuldade) return ("dificuldade está igual ao anterior", false);
 
             if (personagemEntrada.EstiloAtaque == personagemEncontrado.EstiloAtaque) return ("EstiloAtaque está igual ao anterior", false);
 
@@ -99,7 +99,7 @@ namespace DotaApi.Utils.Extensions
             {
                 if (personagemEntrada.Funcao.ToLower() == personagemEncontrado.Funcao.ToLower())
                 {
-                    if (personagemEntrada.dificuldade == personagemEncontrado.dificuldade)
+                    if (personagemEntrada.Dificuldade == personagemEncontrado.Dificuldade)
                     {
                         if (personagemEntrada.EstiloAtaque == personagemEncontrado.EstiloAtaque)
                         {
@@ -123,7 +123,7 @@ namespace DotaApi.Utils.Extensions
             {
                 if (personagemEntrada.Funcao.ToLower() != personagemEncontrado.Funcao.ToLower())
                 {
-                    if (personagemEntrada.dificuldade != personagemEncontrado.dificuldade)
+                    if (personagemEntrada.Dificuldade != personagemEncontrado.Dificuldade)
                     {
                         if (personagemEntrada.EstiloAtaque != personagemEncontrado.EstiloAtaque)
                         {

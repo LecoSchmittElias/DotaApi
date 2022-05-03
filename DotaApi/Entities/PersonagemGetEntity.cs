@@ -6,15 +6,16 @@ namespace DotaApi.Entities
     {
         public PersonagemGetEntity(Guid? id, EntradaDto? personagem)
         {
-            if (id != null) Id = (Guid)id;
+            if (id.HasValue) Id = id.Value;
             if (!string.IsNullOrEmpty(personagem.Nome)) Nome = personagem.Nome;
             if (!string.IsNullOrEmpty(personagem.Funcao)) Funcao = personagem.Funcao;
-            if (personagem.AtributoPrimario != null) AtributoPrimario = (PersonagemEnum.Atributo)personagem.AtributoPrimario;
-            if (personagem.EstiloAtaque != null) EstiloAtaque = (PersonagemEnum.Estilo)personagem.EstiloAtaque;
+            if (personagem.AtributoPrimario.HasValue) AtributoPrimario = personagem.AtributoPrimario.Value;
+            if (personagem.EstiloAtaque.HasValue) EstiloAtaque = personagem.EstiloAtaque.Value;
+
 
             AtributoSecundario = personagem.AtributoSecundario;
             Imagem = personagem.Imagem;
-            dificuldade = personagem.Dificuldade;
+            Dificuldade = personagem.Dificuldade;
         }
     }
 }

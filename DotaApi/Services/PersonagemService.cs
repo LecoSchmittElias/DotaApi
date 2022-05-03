@@ -137,7 +137,7 @@ namespace DotaApi.Services
             var verificador = Verificador(personagem);
             if (verificador.Item2 == false) return new RetornoDto(SistemaEnum.Retorno.BadRequest, null, verificador.Item1);
 
-            var personagemInserido = new PersonagemEntity((Guid)id, personagem);
+            var personagemInserido = new PersonagemEntity(id.Value, personagem);
 
             var personagemEncontrado = _personagemRepository.SelectId(personagemInserido);
 
