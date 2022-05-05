@@ -3,12 +3,12 @@ using DotaApi.Enums;
 
 namespace DotaApi.Repositories
 {
-    public class PersonagemRepository: IPersonagemRepository
+    public class PersonagemRepository : IPersonagemRepository
     {
         public List<PersonagemEntity> Personagens { get; set; } = new List<PersonagemEntity>()
         {
-            new PersonagemEntity() 
-            {  
+            new PersonagemEntity()
+            {
             Id = Guid.Parse("b301341c-7a52-4792-be27-937b103ea6ca"),
             Nome = "Razor",
             Funcao = "Carry",
@@ -17,8 +17,8 @@ namespace DotaApi.Repositories
             AtributoPrimario = PersonagemEnum.Atributo.Agilidade,
             AtributoSecundario = PersonagemEnum.Atributo.Forca,
             Imagem = "https://cdn.cloudflare.steamstatic.com/apps/dota2/videos/dota_react/heroes/renders/razor.png"
-            },    
-            new PersonagemEntity() 
+            },
+            new PersonagemEntity()
             {
             Id = Guid.Parse("dd5555cc-51a9-44fe-bd84-a971a1fd239b"),
             Nome = "Tusk",
@@ -51,7 +51,7 @@ namespace DotaApi.Repositories
 
         public void ModificarPersonagem(PersonagemEntity personagemInserido, PersonagemEntity personagemEncontrado)
         {
-           var localizacao = Personagens.IndexOf(personagemEncontrado);
+            var localizacao = Personagens.IndexOf(personagemEncontrado);
 
             Personagens[localizacao].EstiloAtaque = personagemInserido.EstiloAtaque;
             Personagens[localizacao].Nome = personagemInserido.Nome;

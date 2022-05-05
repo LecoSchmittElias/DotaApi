@@ -1,12 +1,11 @@
 ﻿using DotaApi.Dtos;
 using DotaApi.Entities;
-using DotaApi.Enums;
 
 namespace DotaApi.Utils.Extensions
 {
     public static class PersonagemExtensao
-    { 
-        public static (string, bool) VerificarDadosEspecificosNulos( this EntradaDto dadosVerificar)
+    {
+        public static (string, bool) VerificarDadosEspecificosNulos(this EntradaDto dadosVerificar)
         {
 
             if (dadosVerificar == null) return ("Todos os dados estão nulos", false);
@@ -25,7 +24,7 @@ namespace DotaApi.Utils.Extensions
 
         public static (string, bool) VerificarDadosTipo(this EntradaDto dadosVerificar)
         {
-            int[] auxiliar3 = new int[3] { 1, 2, 3};
+            int[] auxiliar3 = new int[3] { 1, 2, 3 };
             int[] auxiliar2 = new int[2] { 1, 2 };
 
             if (!Array.Exists(auxiliar2, x => x == (int)dadosVerificar.EstiloAtaque)) return ("Estilo invalido", false);
@@ -52,7 +51,7 @@ namespace DotaApi.Utils.Extensions
             {
                 if (string.IsNullOrEmpty(dadosVerificar.Funcao))
                 {
-                    if(dadosVerificar.EstiloAtaque == null)
+                    if (dadosVerificar.EstiloAtaque == null)
                     {
                         if (dadosVerificar.AtributoPrimario == null)
                         {
@@ -60,19 +59,19 @@ namespace DotaApi.Utils.Extensions
                             {
                                 if (dadosVerificar.Dificuldade == null)
                                 {
-                                        if (string.IsNullOrEmpty(dadosVerificar.Imagem)) return ("Dados encontram-se nulos!", false);
+                                    if (string.IsNullOrEmpty(dadosVerificar.Imagem)) return ("Dados encontram-se nulos!", false);
                                 }
                             }
                         }
                     }
                 }
-            }       
+            }
 
-            return ("",true);
+            return ("", true);
         }
 
 
-        public static (string, bool) VerificarAtualizacaoTotal( this PersonagemEntity personagemEntrada, PersonagemEntity personagemEncontrado)
+        public static (string, bool) VerificarAtualizacaoTotal(this PersonagemEntity personagemEntrada, PersonagemEntity personagemEncontrado)
         {
             if (personagemEntrada.Nome.ToLower() == personagemEncontrado.Nome.ToLower()) return ("Nome está igual ao anterior", false);
 

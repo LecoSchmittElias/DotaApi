@@ -16,7 +16,8 @@ namespace DotaApi.Dtos
             Status = status;
             Retorno = retorno;
 
-            switch (Status) {
+            switch (Status)
+            {
                 case SistemaEnum.Retorno.Criado: Mensagem = "Criado com sucesso!"; break;
                 case SistemaEnum.Retorno.NotFound: Mensagem = "Item não encontrado!"; break;
                 case SistemaEnum.Retorno.BadRequest: Mensagem = "Algo deu errado, tente novamente!"; break;

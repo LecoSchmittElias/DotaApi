@@ -1,8 +1,8 @@
 ﻿using DotaApi.Dtos;
+using DotaApi.Entities;
+using DotaApi.Enums;
 using DotaApi.Repositories;
 using DotaApi.Utils.Extensions;
-using DotaApi.Enums;
-using DotaApi.Entities;
 
 namespace DotaApi.Services
 {
@@ -84,7 +84,7 @@ namespace DotaApi.Services
 
             var personagemEncontrado = _personagemRepository.SelectId(personagemInserido);
 
-            if(personagemEncontrado == null) return new RetornoDto(SistemaEnum.Retorno.NotFound, null);
+            if (personagemEncontrado == null) return new RetornoDto(SistemaEnum.Retorno.NotFound, null);
 
             try
             {
@@ -113,7 +113,7 @@ namespace DotaApi.Services
 
             var modificacaoCerta = personagemInserido.VerificarAtualizacaoTotal(personagemEncontrado);
 
-            if (modificacaoCerta.Item2 == false) return new RetornoDto(SistemaEnum.Retorno.BadRequest, null,modificacaoCerta.Item1);
+            if (modificacaoCerta.Item2 == false) return new RetornoDto(SistemaEnum.Retorno.BadRequest, null, modificacaoCerta.Item1);
 
             if (_personagemRepository.SelectNome(personagemInserido) != null) return new RetornoDto(SistemaEnum.Retorno.BadRequest, null, "Ja temos um heroi cadastrado com esse nome!");
 
@@ -123,7 +123,7 @@ namespace DotaApi.Services
                 _personagemRepository.ModificarPersonagem(personagemInserido, personagemEncontrado);
                 return new RetornoDto(SistemaEnum.Retorno.Ok, null, $"{nomeReserva} foi alterado!");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return new RetornoDto(SistemaEnum.Retorno.BadRequest, null, $"Exceção gerada!: {ex}");
             }
