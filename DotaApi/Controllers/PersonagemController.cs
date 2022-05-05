@@ -2,7 +2,6 @@ using DotaApi.Dtos;
 using DotaApi.Enums;
 using DotaApi.Services;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 
 namespace DotaApi.Controllers
 {
@@ -30,13 +29,13 @@ namespace DotaApi.Controllers
 
 
         [HttpGet(Name = "GetPersonagem")]
-        public IActionResult Get(Guid? id,[FromQuery] EntradaDto? dadosEntrada)
+        public IActionResult Get(Guid? id, [FromQuery] EntradaDto? dadosEntrada)
         {
-          var retorno =  _personagemService.PegarPersonagem(id, dadosEntrada);
+            var retorno = _personagemService.PegarPersonagem(id, dadosEntrada);
 
-           if (retorno.Status.Equals(SistemaEnum.Retorno.NotFound)) return NotFound(retorno.Mensagem);
+            if (retorno.Status.Equals(SistemaEnum.Retorno.NotFound)) return NotFound(retorno.Mensagem);
 
-           if (retorno.Status.Equals(SistemaEnum.Retorno.BadRequest)) return BadRequest(retorno.Mensagem);
+            if (retorno.Status.Equals(SistemaEnum.Retorno.BadRequest)) return BadRequest(retorno.Mensagem);
 
             return Ok(retorno.Retorno);
         }
@@ -44,7 +43,7 @@ namespace DotaApi.Controllers
         [HttpPut(Name = "PutPersonagem")]
         public IActionResult Put(Guid? id, [FromBody] EntradaDto? dadosEntrada)
         {
-            var retorno = _personagemService.MudarPersonagem(id,dadosEntrada);
+            var retorno = _personagemService.MudarPersonagem(id, dadosEntrada);
 
             if (retorno.Status.Equals(SistemaEnum.Retorno.NotFound)) return NotFound(retorno.Mensagem);
 

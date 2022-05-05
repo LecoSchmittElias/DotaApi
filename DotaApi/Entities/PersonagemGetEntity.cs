@@ -1,8 +1,7 @@
 ﻿using DotaApi.Dtos;
-using DotaApi.Enums;
 namespace DotaApi.Entities
 {
-    public class PersonagemGetEntity: PersonagemEntity
+    public class PersonagemGetEntity : PersonagemEntity
     {
         public PersonagemGetEntity(Guid? id, EntradaDto? personagem)
         {

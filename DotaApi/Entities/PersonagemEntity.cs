@@ -16,7 +16,7 @@ namespace DotaApi.Entities
 
         public PersonagemEnum.Atributo AtributoPrimario { get; set; }
 
-        public  PersonagemEnum.Atributo? AtributoSecundario { get; set; }
+        public PersonagemEnum.Atributo? AtributoSecundario { get; set; }
 
         public string? Imagem { get; set; }
 
